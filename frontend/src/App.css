@@ -1,0 +1,55 @@
+.App {
+  text-align: center;
+  margin-top: 100px;
+  display: flex;
+  justify-content: space-around;
+}
+
+input {
+  height: 30px;
+  margin-left: 10px;
+}
+
+button {
+  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  margin: 20px;
+  background-color: #dc57cd;
+}
+
+button:hover {
+  background-color: #dccf57;
+}
+
+.reset__button {
+  font-size: 10px;
+  background-color: #b1c92b;
+}
+
+.slot__label {
+  height: 30px;
+  width: 30px;
+  background-color: rgb(64, 185, 76);
+  border: 1px solid black;
+  margin-right: 10px;
+}
+
+.slot__booked__label {
+  height: 30px;
+  width: 30px;
+  background-color: rgb(139, 133, 199);
+  border: 1px solid black;
+  margin-right: 10px;
+}
+
+.slots__label__div {
+  display: flex;
+  align-items: center;
+}
+
+.demonstration__div {
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,15 @@
+.slot {
+  height: 30px;
+  width: 30px;
+  background-color: rgb(64, 185, 76);
+  border: 1px solid black;
+  margin: 2px;
+}
+
+.slot__booked {
+  height: 30px;
+  width: 30px;
+  background-color: rgb(139, 133, 199);
+  border: 1px solid black;
+  margin: 2px;
+}
