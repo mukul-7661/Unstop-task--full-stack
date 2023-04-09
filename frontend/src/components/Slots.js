@@ -43,9 +43,16 @@ function Slots() {
   // Fetch status of all seats
 
   const fun1 = async () => {
-    const seatsTemp = await axios.get("http://localhost:8800/api/seats");
+    axios
+      .get("https://unstop-fullstack-api.onrender.com/api/seats")
+      .then((res) => {
+        setSeats(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
-    setSeats(seatsTemp.data);
+    // setSeats(seatsTemp.data);
   };
 
   useEffect(() => {

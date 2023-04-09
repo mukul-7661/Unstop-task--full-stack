@@ -5,33 +5,45 @@ import Slots from "./components/Slots";
 
 function App() {
   const [noOfSeats, setNoOfSeats] = useState();
-  const [bookedSeats, setBookedSeats] = useState([]);
+  const [bookedSeats, setBookedSeats] = useState();
 
   // Book the seats by sending post request and handling the response
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    // let seats;
 
-    const seatBooked = await axios.post("http://localhost:8800/api/seats", {
-      noOfSeats: noOfSeats,
-    });
+    const seats = await axios.post(
+      "https://unstop-fullstack-api.onrender.com/api/seats",
+      {
+        noOfSeats: noOfSeats,
+      }
+    );
+    // .then((res) => {
+    //   setBookedSeats(res.data);
+    //   console.log(res.data);
+    //   // seats = res.data;
+    // })
+    // .catch((err) => {
+    //   console.log(err);
+    // });
+    // console.log("post");
+    // console.log(bookedSeats);
 
-    if (seatBooked.data.alert == "Not valid") {
-      alert("Please enter a number between 1 and 7");
-    }
-    if (
-      seatBooked.data.alert ==
-      "Number of Seats you want to book are not available"
-    ) {
-      alert("Number of Seats you want to book are not available");
-    }
-    if (Array.isArray(seatBooked.data)) {
-      let message = seatBooked.data[0];
-      for (let i = 1; i < seatBooked.data.length; i++) {
+    if (Array.isArray(seats.data)) {
+      console.log("post");
+      let message = seats.data[0];
+      for (let i = 1; i < seats.data.length; i++) {
         message += ",";
-        message += seatBooked.data[i];
+        message += seats.data[i];
       }
       alert("Seats Booked are " + message);
+    } else if (seats.data.alert == "Not valid") {
+      alert("Please enter a number between 1 and 7");
+    } else if (
+      seats.data.alert == "Number of Seats you want to book are not available"
+    ) {
+      alert("Number of Seats you want to book are not available");
     }
     setNoOfSeats("");
   };
@@ -39,7 +51,9 @@ function App() {
   // Reset all the seat bookings
 
   const clickHandler = async () => {
-    await axios.put("http://localhost:8800/api/seats/reset");
+    await axios.put(
+      "https://unstop-fullstack-api.onrender.com/api/seats/reset"
+    );
     alert("All bookings have been reset");
   };
 

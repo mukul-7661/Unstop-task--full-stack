@@ -10,7 +10,9 @@ function SlotsRow(props) {
             name={i}
             seats={props.seats}
             isBooked={
-              props.seats.length > 0 ? props.seats[i - 1].isBooked : false
+              Array.isArray(props.seats) && props.seats.length > 0
+                ? props.seats[i - 1].isBooked
+                : false
             }
           />
         );
